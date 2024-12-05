@@ -1,0 +1,28 @@
+#include <string>
+#include <vector>
+#include <sstream>
+
+using namespace std;
+
+int solution(string s) {
+    int answer = 0;
+    
+    // 문자열 분리, stringstream
+    stringstream ss(s);
+    vector<string> vslist;
+    
+    string s_tmp;
+    
+    while(ss >> s_tmp)
+        vslist.push_back(s_tmp);
+    
+    for(int i=0; i<vslist.size(); i++)
+    {
+        if(vslist[i] == "Z")
+            answer -= stoi(vslist[i-1]);
+        else
+            answer += stoi(vslist[i]);
+    }
+    
+    return answer;
+}
